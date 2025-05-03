@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0e5d2e;
+  --foreground: #ffffff;
+  --felt: #0e5d2e;
+  --chip-white: #e6e6e6;
+  --chip-red: #e6403e;
+  --chip-blue: #4574e6;
+  --chip-green: #40d362;
+  --chip-black: #2a2a30;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0a3d1e;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--felt);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-image: radial-gradient(circle, rgba(26, 126, 70, 0.7) 2px, transparent 0),
+                    radial-gradient(circle, rgba(26, 126, 70, 0.7) 2px, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
 }
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+.chip {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chip::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.chip::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.chip-white {
+  background-color: var(--chip-white);
+  border: 4px solid #c7c7c7;
+}
+
+.chip-red {
+  background-color: var(--chip-red);
+  border: 4px solid #bc3231;
+}
+
+.chip-blue {
+  background-color: var(--chip-blue);
+  border: 4px solid #3762c5;
+}
+
+.chip-green {
+  background-color: var(--chip-green);
+  border: 4px solid #35b053;
+}
+
+.chip-black {
+  background-color: var(--chip-black);
+  border: 4px solid #1e1e21;
+}
+
+.chip-stack {
+  position: relative;
+  height: 60px;
+  width: 50px;
+  margin: 0 auto;
+}
+
+.chip-value-1 { top: 0; z-index: 5; }
+.chip-value-5 { top: -5px; z-index: 4; }
+.chip-value-10 { top: -10px; z-index: 3; }
+.chip-value-25 { top: -15px; z-index: 2; }
+.chip-value-100 { top: -20px; z-index: 1; }
