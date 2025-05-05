@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // good to go
+  // nothing needed for dynamic hosting
 };
 
 export default nextConfig;
+
